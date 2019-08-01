@@ -1,0 +1,380 @@
+@import '_cores';
+@import '_mobile';
+
+// =================== CONFIGRAÇÕES GERAIS =================== //
+
+body {
+  background-color : #a9a9a9;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0px;
+  padding: 0px;
+  border: 0;
+  vertical-align: baseline;
+  overflow-x: hidden;
+}
+
+ul, ol {
+  list-style: none;
+  padding: 0px;
+}
+a{
+  text-decoration: none;
+}
+input{
+  outline: none;
+}
+
+// =================== HEADER =================== //
+
+.header{
+  background: linear-gradient(180deg, $fundoPadrao 70%, $fundoMenu 33%);
+  display: block;
+}
+.headerContainer{
+  max-width: 1200px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  display: grid;
+  grid-gap: 10px;
+	grid-template-columns: auto 180px auto;
+		grid-template-areas: "boas-vindas logo info" "menu-principal menu-principal menu-principal";
+}
+
+// =================== HEADER BOAS VINDAS E BUSCA =================== //
+
+// # Boas vindas
+
+.headerBoasVindas{
+  grid-area: boas-vindas;
+  width: 103%;
+}
+.headerBoasVindas__mensagem{
+  width: 100%;
+  border-bottom: solid 1px $borda;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 12px;
+    p{
+      color: $textoPadrao;
+      margin-right: 7px;
+    }
+    a{
+      color: $white;
+      font-weight: 700;
+      &:hover{
+        color: $textoPadrao; 
+      }
+    }
+}
+
+// # Busca
+
+.headerBoasVindas__busca{
+  width: 100%;
+  margin-top: 20px;
+  input{
+    width: 86%;
+    background-image: url(../img/icon-lupa.png);
+    background-repeat: no-repeat;
+    background-position-x: 17px;
+    background-position-y: 12px;
+    border: 0;
+    padding: 10px 10px 10px 60px;
+    height: 30px;
+    font-size: 12px;
+    color: $textoPadrao;
+    text-transform: uppercase;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    &:focus{
+      background-color: $white;
+    }
+  }
+  
+}
+
+// =================== LOGOMARCA =================== //
+
+.headerLogo{
+  grid-area: logo;
+  height: 125px;
+  img{
+    z-index: 1000;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 19px;
+    margin: auto;
+  }
+}
+
+// =================== MENU INFORMAÇÕES E CARRINHO =================== //
+
+// # Menu informações
+
+.headerInfo{
+  grid-area: info;
+  width: 100%;
+}
+.headerInfo__menuTopo{
+  width: 100%;
+  border-bottom: solid 1px $borda;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 12px;
+  justify-content: flex-end;
+  a{
+    color: $textoPadrao;
+    font-weight: 400;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    font-weight: 700;
+    &:hover{
+      color: $white; 
+    }
+  }
+
+}
+
+// # Carrinho e logout
+
+.headerInfo__icones{
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+.headerInfo__menuTopo__link{
+  width: 100px;
+}
+.headerInfo__icones__carrinho{
+  width: 24px;
+  height: 31px;
+  display: flex;
+  background: url(../img/icon-cart.png) no-repeat center top;
+  justify-content: center;
+  align-items: center;
+  margin-top: 9px;
+  margin-left: 17px;
+  span{
+    color: $textoPadrao;
+    font-weight: 700;
+    font-size: 12px;
+  }
+}
+.headerCarrinho{
+  width: 60px;
+  height: 50px;
+  &:hover{
+    background: $white;
+    width: 60px;
+    height: 50px;
+  }
+}
+.headerCarrinho__container{
+  width: 250px;
+  background: $white;
+  padding: 15px;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  z-index: 500;
+  right: 0;
+  margin-top: 10px;
+}
+.headerCarrinho__item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: solid 1px $bordaCarrinho;
+  font-size: 14px;
+  color: $textoCarrinho;
+  font-weight: 700;
+}
+.headerCarrinho__total{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  span{
+    font-size: 18px;
+    color: $textoTotal;
+    font-weight: 700;
+  }
+  p{
+    font-size: 14px;
+    color: $textoCarrinho;
+    font-weight: 700;
+  }
+}
+.headerCarrinho__footer{
+  margin-top: 25px;
+}
+
+/////////////// # Exemplo de modificador
+
+.botaoPadrao{
+  background: $fundoPadrao;
+  color: $white;
+  padding: 15px;
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  &:hover{
+    background: $fundoMenu;
+  }
+}
+.botaoPadrao--carrinho{
+  background: $destaque;
+  color: $white;
+  &:hover{
+    background: $fundoPadrao;
+  }
+}
+.headerCarrinho:hover .headerCarrinho__container {
+  visibility: visible;
+  opacity: 1;
+}
+
+.headerInfo__icones__logout{
+  width: 29px;
+  height: 31px;
+  display: block;
+  margin-right: 20px;
+  text-indent: -9000px;
+  background: url(../img/icon-logout.png) no-repeat center top;
+  &:hover{
+    width: 29px;
+    height: 31px;
+    display: block;
+    margin-right: 20px;
+    text-indent: -9000px;
+    background: url(../img/icon-logout-hover.png) no-repeat center top;
+  }
+}
+
+// =================== MENU PRINCIPAL ===================== //
+
+.headerMenu{
+  grid-area: menu-principal;
+  height: 60px;
+  width: 100%;
+  background: $fundoMenu;
+  position: relative;
+}
+.headerMenu__links{
+  float: left;
+  padding: 23px 45px;
+  color: $textoPadrao;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  &:hover{
+    color: $white;
+  }
+}
+.headerMenu__links--first{
+  padding-left: 0px !important;
+}
+.headerMenu__links--last{
+  padding-right: 0px !important;
+}
+.headerMenu__esquerdo{
+  width: 50%;
+  float: left;
+}
+.headerMenu__direito{
+  width: 50%;
+  float: right;
+  a{
+    float: right !important;
+  }
+}
+
+.headerMenu__megaMenu:hover .headerMenu__megaMenu__container {
+  visibility: visible;
+  opacity: 1;
+}
+.headerMenu__megaMenu__container{
+  height: 300px;
+  visibility: hidden;
+  opacity: 0;
+  background: $fundoPadrao;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+.headerMenu__megaMenu__content{
+  width: 100%;
+  h2{
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $white;
+    margin: 0px;
+    padding: 25px 0px 0px 25px;
+  }
+}
+.headerMenu__megaMenu__links{
+  margin: 0px;
+  padding: 2px 0px 25px 25px;
+  width: 50%;
+  li{
+    margin-top: 15px;
+  }
+  a{
+    font-size: 10px;
+    color: $textoPadrao;
+    font-weight: 700;
+    text-transform: uppercase;
+    &:hover{
+      color: $white;
+    }
+  }
+}
+.headerMenu__megaMenu__intens{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.headerMenu__megaMenu__footer{
+  background: $fundoMenu;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 25px;
+  a{
+    font-size: 14px;
+    color: $white;
+    text-transform: uppercase;
+    font-weight: 700;
+    &:hover{
+      color: $textoPadrao;
+    }
+  }
+}
+
+@media (max-width: 992px){
+  .header{
+    display: none;
+  }
+}
